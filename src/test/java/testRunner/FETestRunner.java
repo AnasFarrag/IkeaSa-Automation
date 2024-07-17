@@ -5,7 +5,7 @@ import utilities.TestBase;
 
 @CucumberOptions(features = {"src/test/java/features/fe"}
         ,glue = {"stepDefinition","pages/fe", "utilities"}
-        ,tags = ("@addToCart") //( @FESignInFailure and not @STOnly and not @RunOnce and not @IEOnly")
+        ,tags = ("@addToCart")
         ,plugin = {"pretty","html:test-output/DefaultReport/DefaultReport.html"
 //      ,"json:test-output/jsonReport/jsonReport.json"
         //,"junit:test-output/junitReport/xmlReport.xml"

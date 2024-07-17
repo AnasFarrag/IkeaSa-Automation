@@ -10,5 +10,7 @@ public class ShoppingCartStepDef extends ShoppingCartPage {
     public void userClickOnContinueToCheckout() {
         goToTestLink();
         clickOnCheckout();
+
+
     }
 }

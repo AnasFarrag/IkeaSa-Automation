@@ -2,12 +2,12 @@ package pages.fe;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+import utilities.Assertions;
 import utilities.actions.ElementActions;
 
 public class DeliveryPage extends ElementActions {
-
-
+    Assertions assertions = new Assertions();
+    // Locators
     By firstNameTxtBx=By.id("mat-input-6");
     By lastNameTxtBx=By.id("mat-input-7");
     By cityDropdown=By.id("mat-input-8");
@@ -20,6 +20,22 @@ public class DeliveryPage extends ElementActions {
     By defaultAddressCHKBX=By.id("mat-checkbox-2-input");
     By loadingSpinner=By.xpath("//ngb-modal-window[contains(@role,'dialog')]");
     By nextBTN=By.xpath("//button[contains(@class,'mat-focus-indicator close-modal next-btn btn-rounded mat-raised-button mat-button-base mat-primary enableBtn')]");
+    By nextToCheckout = By.xpath("(//button[@id = 'save'])[1]");
+    By creditCardButton = By.xpath("//*[@class = 'credit-card-title mb-0']");
+    By cardNumber = By.id("card_number");
+    By NameOnTheCard = By.id("card_holder_name");
+    By expiryMonthDropdown = By.id("dropdownBasic11");
+    By expiryMonth = By.id("month_4");
+    By expiryYearDropdown = By.id("dropdownBasic2");
+    By expiryYear = By.id("year_1");
+    By CVV = By.id("card_security_code");
+    By PayNowButton = By.xpath("//button[@class= 'proceed pay--button mat-raised-button btn-bold enableBtn']");
+
+    By successIcon = By.xpath("//*[@class = 'image mb-4']");
+    By confirmationNumber = By.xpath("//*[@class = 'confirm-number mb-0']");
+
+//    -----------------------------------------------------------------------------------
+
     public void fillData(){
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
         getElement(firstNameTxtBx).sendKeys("Test");
@@ -36,6 +52,43 @@ public class DeliveryPage extends ElementActions {
     }
 
     public void clickNext(){
-        forceClickOnElement(getElementByIndex(nextBTN,0));
+        forceClickOnElement(getElement(nextToCheckout));
     }
+
+    public void clickNextToCheckout(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(nextToCheckout));
+        forceClickOnElement(getElement(nextToCheckout));
+    }
+
+    public void clickOnCreditDebitCard(){
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
+        forceClickOnElement(getElement(creditCardButton));
+    }
+
+    public void fillTheCreditCardData(){
+        getElement(cardNumber).sendKeys("4242424242424242");
+        getElement(NameOnTheCard).sendKeys("TEST DATA");
+        forceClickOnElement(getElement(expiryMonthDropdown));
+        scrollPageToElement(getElement(expiryMonth));
+        forceClickOnElement(getElement(expiryMonth));
+        forceClickOnElement(getElement(expiryYearDropdown));
+        forceClickOnElement(getElement(expiryYear));
+        getElement(CVV).sendKeys("123");
+    }
+
+    public void clickOnPayNowButton(){
+        forceClickOnElement(getElement(PayNowButton));
+    }
+
+    public void assertSuccessIcon(){
+        try{Thread.sleep(10000);}
+        catch (Exception ignored){}
+        assertions.assertElementExist(successIcon);
+    }
+
+    public void assertConfirmationNumberExists(){
+        assertions.assertElementExist(confirmationNumber);
+    }
+
+
 }
