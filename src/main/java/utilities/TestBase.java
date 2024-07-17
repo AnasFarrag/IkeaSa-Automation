@@ -155,7 +155,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
     {
         return environmentURL.get();
     }
-    public String getEnvironmentBaseURL()
+    public String getEnvironmentTestURL()
     {
         return environmentTestURL.get();
     }
