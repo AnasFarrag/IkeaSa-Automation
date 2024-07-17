@@ -7,7 +7,7 @@ public class ConfigUtil {
     public static String BROWSER;
     public static String HEADLESS;
     public static String Web_URL;
-    public static String Web_BaseURL;
+    public static String Web_TestURL;
 
     public static String Web_SIT_URL;
 
@@ -19,7 +19,7 @@ public class ConfigUtil {
         BROWSER = reader.getPropertyUsingKey("Browser");
         HEADLESS = reader.getPropertyUsingKey("HEADLESS");
         Web_URL = reader.getPropertyUsingKey("Web_URL");
-        Web_BaseURL= reader.getPropertyUsingKey("Web_BaseURL");
+        Web_TestURL= reader.getPropertyUsingKey("Web_TestURL");
 
     }
 }
