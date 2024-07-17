@@ -22,7 +22,7 @@ public class TestBase extends AbstractTestNGCucumberTests {
     public static ThreadLocal<String> disclaimerFlag = new ThreadLocal<>();
     public static ThreadLocal<String> testEnvironment = new ThreadLocal<>();
     public static ThreadLocal<String> environmentURL = new ThreadLocal<>();
-    public static ThreadLocal<String> environmentBaseURL = new ThreadLocal<>();
+    public static ThreadLocal<String> environmentTestURL = new ThreadLocal<>();
     public static Actions actions;
     ChromeOptions chromeOptions = new ChromeOptions();
     FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -157,21 +157,13 @@ public class TestBase extends AbstractTestNGCucumberTests {
     }
     public String getEnvironmentBaseURL()
     {
-        return environmentBaseURL.get();
+        return environmentTestURL.get();
     }
     //============================Set Test Environment================================
     @BeforeTest
     public static void setEnvironment() {
-        String environment = ConfigUtil.ENVIRONMENT;
-        if (environment.equalsIgnoreCase("ST")) {
-            environmentURL.set(ConfigUtil.Web_ST_URL);
-            environmentBaseURL.set(ConfigUtil.Web_ST_BaseURL);
-            testEnvironment.set("ST");
-        } else if (environment.equalsIgnoreCase("SIT")) {
-            environmentURL.set(ConfigUtil.Web_SIT_URL);
-            environmentBaseURL.set(ConfigUtil.Web_SIT_BaseURL);
-            testEnvironment.set("SIT");
-        }
+            environmentURL.set(ConfigUtil.Web_URL);
+            environmentTestURL.set(ConfigUtil.Web_TestURL);
     }
 //=================================Test Cases Annotations=============================
    @AfterTest
