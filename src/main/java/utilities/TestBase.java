@@ -162,16 +162,8 @@ public class TestBase extends AbstractTestNGCucumberTests {
     //============================Set Test Environment================================
     @BeforeTest
     public static void setEnvironment() {
-        String environment = ConfigUtil.ENVIRONMENT;
-        if (environment.equalsIgnoreCase("ST")) {
-            environmentURL.set(ConfigUtil.Web_ST_URL);
-            environmentBaseURL.set(ConfigUtil.Web_ST_BaseURL);
-            testEnvironment.set("ST");
-        } else if (environment.equalsIgnoreCase("SIT")) {
-            environmentURL.set(ConfigUtil.Web_SIT_URL);
-            environmentBaseURL.set(ConfigUtil.Web_SIT_BaseURL);
-            testEnvironment.set("SIT");
-        }
+            environmentURL.set(ConfigUtil.Web_URL);
+            environmentBaseURL.set(ConfigUtil.Web_BaseURL);
     }
 //=================================Test Cases Annotations=============================
    @AfterTest
