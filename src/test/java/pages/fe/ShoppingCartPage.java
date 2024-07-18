@@ -1,7 +1,6 @@
 package pages.fe;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.actions.ElementActions;
 
 public class ShoppingCartPage extends ElementActions {

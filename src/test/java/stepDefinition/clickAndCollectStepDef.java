@@ -13,7 +13,6 @@ public class clickAndCollectStepDef extends clickAndCollectPage {
     public void userFillHisPersonalDataForClickAndCollect() {
         fillData();
     }
-
     @And("user click next button for click and collect")
     public void userClickNextButtonForClickAndCollect() {
         clickNext();

@@ -29,26 +29,8 @@ public class TestBase extends AbstractTestNGCucumberTests {
     EdgeOptions edgeOptions = new EdgeOptions();
     //===================================Set Drivers Options and capabilities===========================
     //--------------------------------Driver Options------------------------------------
-    public void setDriverLanguage(String language) {
-        switch (language) {
-            case "English" -> {
-                chromeOptions.addArguments("--lang=en");
-                setLanguageIndex(0);
-            }
-            case "Deutsch" -> {
-                chromeOptions.addArguments("--lang=de");
-                setLanguageIndex(1);
-            }
-            case "Arabic" -> {
-                chromeOptions.addArguments("--lang=ar");
-                setLanguageIndex(1);
-            }
-            default -> System.out.println("Undefined language");
-        }
-    }
     public void setChromePreferences() {
         try {
-            //CI/CD Integration Properties
             if (ConfigUtil.HEADLESS.equalsIgnoreCase("true"))
                 chromeOptions.addArguments("--headless=new");
             chromeOptions.addArguments("--remote-allow-origins=*");
@@ -124,21 +106,6 @@ public class TestBase extends AbstractTestNGCucumberTests {
     public String getBrowserType()
     {
         return browserType.get();
-    }
-
-    public int getLanguageIndex()
-    {
-        return languageIndex.get();
-    }
-
-    public void setLanguageIndex(int index)
-    {
-        languageIndex.set(index);
-    }
-
-    public String getDisclaimerFlag()
-    {
-        return disclaimerFlag.get();
     }
 
     public void setDisclaimerFlag(String disclaimerStatus)

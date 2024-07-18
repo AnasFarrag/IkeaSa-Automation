@@ -9,10 +9,6 @@ public class ConfigUtil {
     public static String Web_URL;
     public static String Web_TestURL;
 
-    public static String Web_SIT_URL;
-
-    public static String Web_SIT_BaseURL;
-
     //=======================Endpoints======================
     public static void loadTestConfigurations() {
         PropertiesReader reader = new PropertiesReader( "config.properties");

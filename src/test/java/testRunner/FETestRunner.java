@@ -7,9 +7,6 @@ import utilities.TestBase;
         ,glue = {"stepDefinition","pages/fe", "utilities"}
         ,tags = ("@addToCart")
         ,plugin = {"pretty","html:test-output/DefaultReport/DefaultReport.html"
-//      ,"json:test-output/jsonReport/jsonReport.json"
-        //,"junit:test-output/junitReport/xmlReport.xml"
-        //,"com.cucumber.listener.ExtentCucumberFormatter:"
         ,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 }
 )
