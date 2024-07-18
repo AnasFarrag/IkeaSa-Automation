@@ -1,0 +1,7 @@
+{
+  "creditCardDetails": {
+    "number": 4242424242424242,
+    "name": "TEST DATA",
+    "ccv": 123
+  }
+}

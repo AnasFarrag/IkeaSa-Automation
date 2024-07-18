@@ -1,0 +1,11 @@
+{
+  "deliveryAddress": {
+    "firstName": "Test",
+    "lastName": "Test",
+    "city": "Abha",
+    "district": "Abha",
+    "streetName": "hello world",
+    "mobileNumber": "0512345678",
+    "email": "test@test.com"
+  }
+}
