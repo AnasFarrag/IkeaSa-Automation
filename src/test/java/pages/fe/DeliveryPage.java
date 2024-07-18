@@ -1,17 +1,22 @@
 package pages.fe;
 
+import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.Assertions;
+import utilities.Paths;
 import utilities.actions.ElementActions;
+import utilities.readers.JsonTestDataReader;
 
 public class DeliveryPage extends ElementActions {
     Assertions assertions = new Assertions();
+    JSONObject creditCardData = (JSONObject) JsonTestDataReader.parseJson(Paths.creditCardPath).get("creditCardDetails");
+    JSONObject deliveryAddressData = (JSONObject) JsonTestDataReader.parseJson(Paths.deliveryAddressPath).get("deliveryAddress");
     // Locators
     By firstNameTxtBx=By.id("mat-input-6");
     By lastNameTxtBx=By.id("mat-input-7");
     By cityDropdown=By.id("mat-input-8");
-    By abhaOpt=By.id("mat-option-48");
+    By abhaOpt=By.xpath("//span[text()=' Abha ']");
     By districtDropDown=By.id("mat-input-9");
     By  abhaAlJadidahOpt =By.xpath("//span[text()=' Abha Al Jadidah ']");
     By streetTxtBx=By.id("mat-input-10");
@@ -38,15 +43,15 @@ public class DeliveryPage extends ElementActions {
 
     public void fillData(){
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
-        getElement(firstNameTxtBx).sendKeys("Test");
-        getElement(lastNameTxtBx).sendKeys("Test");
-        getElement(cityDropdown).sendKeys("Abha");
+        getElement(firstNameTxtBx).sendKeys(deliveryAddressData.get("firstName").toString());
+        getElement(lastNameTxtBx).sendKeys(deliveryAddressData.get("lastName").toString());
+        getElement(cityDropdown).sendKeys(deliveryAddressData.get("city").toString());
         forceClickOnElement(getElement(abhaOpt));
-        getElement(districtDropDown).sendKeys("Abha");
+        getElement(districtDropDown).sendKeys(deliveryAddressData.get("district").toString());
         forceClickOnElement(getElement(abhaAlJadidahOpt));
-        getElement(streetTxtBx).sendKeys("hello world");
-        getElement(mobileNumberTxtBx).sendKeys("0512345678");
-        getElement(emailTxtBx).sendKeys("test@test.com");
+        getElement(streetTxtBx).sendKeys(deliveryAddressData.get("streetName").toString());
+        getElement(mobileNumberTxtBx).sendKeys(deliveryAddressData.get("mobileNumber").toString());
+        getElement(emailTxtBx).sendKeys(deliveryAddressData.get("email").toString());
         forceClickOnElement(getElement(defaultAddressCHKBX));
 
     }
@@ -66,14 +71,14 @@ public class DeliveryPage extends ElementActions {
     }
 
     public void fillTheCreditCardData(){
-        getElement(cardNumber).sendKeys("4242424242424242");
-        getElement(NameOnTheCard).sendKeys("TEST DATA");
+        getElement(cardNumber).sendKeys(creditCardData.get("number").toString());
+        getElement(NameOnTheCard).sendKeys(creditCardData.get("name").toString());
         forceClickOnElement(getElement(expiryMonthDropdown));
         scrollPageToElement(getElement(expiryMonth));
         forceClickOnElement(getElement(expiryMonth));
         forceClickOnElement(getElement(expiryYearDropdown));
         forceClickOnElement(getElement(expiryYear));
-        getElement(CVV).sendKeys("123");
+        getElement(CVV).sendKeys(creditCardData.get("ccv").toString());
     }
 
     public void clickOnPayNowButton(){
