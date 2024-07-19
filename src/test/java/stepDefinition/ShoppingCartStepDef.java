@@ -8,7 +8,8 @@ public class ShoppingCartStepDef extends ShoppingCartPage {
 
     @And("user click on continue to checkout")
     public void userClickOnContinueToCheckout() {
-        goToTestLink();
         clickOnCheckout();
+        goToTestLink();
+
     }
 }

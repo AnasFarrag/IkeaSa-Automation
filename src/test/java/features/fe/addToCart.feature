@@ -15,7 +15,7 @@ Feature: Add item to the cart
     Then user should see a success Icon
     And user should see a confirmation Number
 
-
+@test
   Scenario:user add item to cart and checkout
     Given user open Ikea Portal
     When user add product to bag
