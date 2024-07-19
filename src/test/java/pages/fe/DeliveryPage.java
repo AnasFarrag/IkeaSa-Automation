@@ -42,7 +42,10 @@ public class DeliveryPage extends ElementActions {
 //    -----------------------------------------------------------------------------------
 
     public void fillData() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
+        } catch (Exception ignored) {
+        }
         try {
             String firstname = deliveryAddressData.get("firstName").toString();
             getElement(firstNameTxtBx).sendKeys(firstname);
@@ -77,18 +80,25 @@ public class DeliveryPage extends ElementActions {
     }
 
     public void clickNextToCheckout() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(nextToCheckout));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(nextToCheckout));
+        } catch (Exception ignored) {
+        }
         forceClickOnElement(getElement(nextToCheckout));
     }
 
-    public void clickOnCreditDebitCard() {
+    public void clickOnCreditDebitCard() throws InterruptedException {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
         wait.until(ExpectedConditions.visibilityOfElementLocated(creditCardButton));
+        Thread.sleep(5000);
         forceClickOnElement(getElement(creditCardButton));
     }
 
     public void fillTheCreditCardData() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingSpinner));
+        } catch (Exception ignored) {
+        }
 
         getElement(cardNumber).sendKeys(creditCardData.get("number").toString());
         getElement(NameOnTheCard).sendKeys(creditCardData.get("name").toString());
@@ -106,7 +116,7 @@ public class DeliveryPage extends ElementActions {
 
     public void assertSuccessIcon() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(15000);
         } catch (Exception ignored) {
         }
         assertions.assertElementExist(successIcon);

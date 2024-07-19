@@ -23,7 +23,7 @@ public class DeliveryStepDef extends DeliveryPage {
     }
 
     @And("user choose pay by credit debit card")
-    public void userChoosePayByCreditDebitCard() {
+    public void userChoosePayByCreditDebitCard() throws InterruptedException {
         clickOnCreditDebitCard();
     }
 
